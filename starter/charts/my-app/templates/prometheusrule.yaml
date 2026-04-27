@@ -1,0 +1,14 @@
+{{- if .Values.alerts.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "my-app.fullname" . }}
+  labels:
+    {{- include "my-app.labels" . | nindent 4 }}
+    prometheus: application
+spec:
+  groups:
+    - name: {{ include "my-app.fullname" . }}.rules
+      rules:
+        {{- toYaml .Values.alerts.rules | nindent 8 }}
+{{- end }}

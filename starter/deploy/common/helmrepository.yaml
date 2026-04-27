@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: my-app
+  namespace: flux-apps
+spec:
+  type: oci
+  url: oci://123456789012.dkr.ecr.eu-west-1.amazonaws.com
+  provider: aws
+  interval: 5m

@@ -1,0 +1,20 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: my-app
+  namespace: flux-apps
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: my-app
+      version: "0.1.x"
+      sourceRef:
+        kind: HelmRepository
+        name: my-app
+        namespace: flux-apps
+      interval: 1m
+  values:
+    image:
+      repository: ""  # Patched per environment
+      tag: "latest"   # Updated by image automation or manually
