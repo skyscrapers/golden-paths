@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/starter/app"
+    schedule:
+      interval: "weekly"
+    groups:
+      pip-starter-app:
+        patterns:
+          - "*"
