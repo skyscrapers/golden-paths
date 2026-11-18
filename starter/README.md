@@ -33,6 +33,18 @@ Before using this template, Skyscrapers will have provisioned:
 6. Encrypt your secrets: `sops -e -i deploy/production/secret.yaml`
 7. Push to main -- CI builds, Flux deploys
 
+## Python dependencies
+
+`app/requirements.in` lists the direct dependencies of the sample app. `app/requirements.txt` is generated from it with [pip-tools](https://pip-tools.readthedocs.io/) and pins every package, so don't edit it by hand. Dependabot updates `requirements.txt` when a new version is out.
+
+To add or change a dependency, edit `requirements.in`, then regenerate the pins with Python 3.13 (the version in the Dockerfile):
+
+```
+cd app
+pip install pip-tools==7.7.0
+pip-compile --strip-extras requirements.in
+```
+
 ## Golden path documentation
 
 Each feature in this starter is documented in detail:
