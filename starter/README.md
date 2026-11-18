@@ -37,13 +37,7 @@ Before using this template, Skyscrapers will have provisioned:
 
 `app/requirements.in` lists the direct dependencies of the sample app. `app/requirements.txt` is generated from it with [pip-tools](https://pip-tools.readthedocs.io/) and pins every package, so don't edit it by hand. Dependabot updates `requirements.txt` when a new version is out.
 
-To add or change a dependency, edit `requirements.in`, then regenerate the pins with Python 3.13 (the version in the Dockerfile):
-
-```
-cd app
-pip install pip-tools==7.7.0
-pip-compile --strip-extras requirements.in
-```
+To add or change a dependency, edit `app/requirements.in`, then run `make requirements` in `starter/` to regenerate the pins. It uses Python 3.13, the version in the Dockerfile.
 
 ## Golden path documentation
 
