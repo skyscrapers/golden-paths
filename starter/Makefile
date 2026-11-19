@@ -9,5 +9,5 @@ requirements:
 	&& $(PYTHON_313) -m venv $$tmp \
 	&& $$tmp/bin/pip install -q pip-tools==$(PIP_TOOLS_VERSION) \
 	&& cd app \
-	&& CUSTOM_COMPILE_COMMAND="make requirements" $$tmp/bin/pip-compile -q --strip-extras requirements.in \
+	&& CUSTOM_COMPILE_COMMAND="make requirements" $$tmp/bin/pip-compile -q --generate-hashes requirements.in \
 	; status=$$?; rm -rf $$tmp; exit $$status
