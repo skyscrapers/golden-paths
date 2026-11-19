@@ -2,7 +2,7 @@ FROM python:3.13-slim AS build
 
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --require-hashes -r requirements.txt
 
 FROM python:3.13-slim
 
